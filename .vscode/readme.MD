@@ -1,0 +1,15 @@
+3-21:新版本有较大变动：按照文件重新编写代码
+4-6：修复了一个错误
+窗口部分：
+    共有两个窗口：用户管理界面和主界面
+        用户管理界面：
+            父类型是QDialog,不可拉伸，固定大小，控件使用setgeometry定位
+            有两个子frame，登陆（manage_frame1）和注册（manage_frame2）
+            目前登陆界面实现的功能基于对文本文件data.txt的读取，读取后生成用户名all_users与密码all_codes列表
+            确认无误后，用户管理窗口触发accep信号，主进程检测到后打开主界面
+        主界面：
+            父类型是QMainWindow,可拉伸，控件布局使用QGridLayout定位，拉伸后控件自动拉伸
+            有两个子frame，登陆（manage_frame1）和注册（manage_frame2）
+            主界面堆叠布局采用QStackedWidget实现，放置在main_stack里，主界面中新控件为main_stack
+            目前共有三个堆叠布局，分别为端子号查询界面，端子号识别界面和端子号录入界面terminal_inquire_stack、terminal_recognize_stack、terminal_input_stack。目前大体实现功能的为端子号查询界面
+            主界面有菜单栏与状态栏
